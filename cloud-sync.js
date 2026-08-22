@@ -2,7 +2,7 @@
   const config = window.SUPABASE_CONFIG || {};
   const configured = /^https:\/\/.+\.supabase\.co$/.test(config.url || "") && !String(config.publishableKey || "").includes("YOUR-");
   let client = null, user = null, getState = null, applyState = null, timer = null, initialized = false;
-  function status(message, tone = "") { const button = document.querySelector("#sync-status"); if (button) { button.textContent = message; button.dataset.tone = tone; } }
+  function status(message, tone = "") { const button = document.querySelector("#sync-status"); if (button) { button.querySelector("span").textContent = message; button.dataset.tone = tone; button.title = tone === "success" ? "Database healthy — latest operation succeeded" : tone === "error" ? "Database unavailable — select to retry" : message; } }
   function showAuth() { document.querySelector("#auth-backdrop")?.classList.add("show"); }
   function hideAuth() { document.querySelector("#auth-backdrop")?.classList.remove("show"); }
   async function pushNow(state) {
@@ -11,6 +11,11 @@
     const { error } = await client.from("tracker_state").upsert({ user_id: user.id, state, updated_at: new Date().toISOString() }, { onConflict: "user_id" });
     if (error) { console.error("Supabase save failed", error); status("Sync failed", "error"); return; }
     status("Saved online", "success");
+  }
+  async function checkHealth() {
+    if (!client || !user) return;
+    const { error } = await client.from("tracker_state").select("user_id", { head: true, count: "exact" }).eq("user_id", user.id);
+    status(error ? "Database unavailable" : "Database healthy", error ? "error" : "success");
   }
   async function loadRemote() {
     if (!client || !user) return;
@@ -35,6 +40,7 @@
       client = window.supabase.createClient(config.url, config.publishableKey, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } });
       const { data } = await client.auth.getSession(); await setUser(data.session?.user);
       client.auth.onAuthStateChange((_event, session) => setTimeout(() => setUser(session?.user), 0));
+      setInterval(checkHealth, 60000);
     }
   };
   document.addEventListener("click", async event => {
