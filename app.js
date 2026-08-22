@@ -8,7 +8,8 @@ const navItems={Home:"⌂","Study Plan":"▤",Tasks:"✓",Roadmap:"◇"};
 
 function freshState(){return JSON.parse(JSON.stringify(seed))}
 function loadState(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||freshState()}catch{return freshState()}}
-function saveState(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state));updateTopStats();window.cloudSync?.schedule(state)}
+function rebuildTopicActivity(){const activity={};Object.values(state.topicChecks||{}).forEach(checks=>Object.values(checks||{}).forEach(item=>{if(item?.done&&item.completedAt)activity[item.completedAt]=(activity[item.completedAt]||0)+1}));Object.values(state.customTopics||{}).forEach(topics=>(topics||[]).forEach(item=>{if(item.done&&item.completedAt)activity[item.completedAt]=(activity[item.completedAt]||0)+1}));state.topicActivity=activity}
+function saveState(){rebuildTopicActivity();localStorage.setItem(STORAGE_KEY,JSON.stringify(state));updateTopStats();window.cloudSync?.schedule(state)}
 function esc(value=""){return String(value).replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]))}
 function safeNote(html=""){const doc=new DOMParser().parseFromString(`<div>${html}</div>`,"text/html"),root=doc.body.firstElementChild,allowed=new Set(["DIV","P","BR","B","STRONG","I","EM","U","MARK","H3","UL","OL","LI","A","SPAN"]);root?.querySelectorAll("*").forEach(el=>{if(!allowed.has(el.tagName)){el.replaceWith(...el.childNodes);return}[...el.attributes].forEach(a=>{if(!(el.tagName==="A"&&a.name==="href")&&!(el.tagName==="SPAN"&&a.name==="data-check"))el.removeAttribute(a.name)});if(el.tagName==="A"&&!/^https?:\/\//i.test(el.getAttribute("href")||""))el.removeAttribute("href")});return root?.innerHTML||""}
 function progressKey(code,index){return `${code}-${index}`}
