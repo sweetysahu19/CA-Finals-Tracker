@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#171f43">
+  <meta name="description" content="CA Final syllabus, revision, task and document tracker">
+  <meta property="og:title" content="Sweety's CA Finals HQ">
+  <meta property="og:description" content="100% preparation. One clear system.">
+  <meta property="og:image" content="og.png">
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-extra.css">
+  <title>Sweety's CA Finals HQ</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span>CA</span><div>Sweety’s<br><b>Finals HQ</b></div></div>
+      <nav id="nav"></nav>
+      <blockquote>✦<p>One chapter at a time. Keep moving.</p></blockquote>
+      <div class="profile"><i>S</i><div><b>Sweety</b><small>CA Final · 2027</small></div></div>
+    </aside>
+    <div class="page">
+      <header><div><small id="eyebrow">MISSION · OCTOBER 2026</small><h1 id="page-title">Good afternoon, Sweety <em>✦</em></h1><p id="page-subtitle">Every focused hour is a vote for the CA you’re becoming.</p></div><div class="header-actions"><button id="sync-btn" class="sync-btn">☁ Set up sync</button><button id="focus-btn">▶ Start focus session</button></div></header>
+      <main id="view"></main>
+    </div>
+  </div>
+  <input type="file" id="restore-input" accept=".cafinalbackup,application/json" hidden>
+  <dialog id="sync-dialog" class="sync-dialog"><form method="dialog" class="sync-card"><button class="dialog-close" value="cancel" aria-label="Close">×</button><span class="kicker">PRIVATE CLOUD SYNC</span><h2>Use your tracker everywhere</h2><p id="sync-message">Connect a free Supabase project, then sign in with the same email on every browser.</p><div id="sync-setup"><label>Supabase project URL<input id="supabase-url" type="url" placeholder="https://your-project.supabase.co"></label><label>Publishable / anon key<input id="supabase-key" type="password" placeholder="eyJ…"></label><button type="button" class="primary" id="save-supabase">Save connection</button></div><div id="sync-auth" hidden><label>Email<input id="sync-email" type="email" autocomplete="email" placeholder="you@example.com"></label><label>Password<input id="sync-password" type="password" autocomplete="current-password" minlength="6" placeholder="Minimum 6 characters"></label><div class="auth-actions"><button type="button" class="primary" id="sign-in">Sign in</button><button type="button" id="sign-up">Create account</button></div></div><div id="sync-connected" hidden><div class="connected-user"><i>✓</i><div><b id="sync-user"></b><small>Automatic sync is active</small></div></div><div class="auth-actions"><button type="button" class="primary" id="sync-now">Sync now</button><button type="button" id="sign-out">Sign out</button></div></div><small class="privacy-note">Documents stay only on this device. Never paste a Supabase service-role key here.</small></form></dialog>
+  <script src="data.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="supabase-sync.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
