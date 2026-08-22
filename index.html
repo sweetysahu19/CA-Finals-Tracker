@@ -10,9 +10,9 @@
   <meta property="og:image" content="og.png">
   <link rel="icon" href="favicon.svg">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="styles-extra.css">
-  <link rel="stylesheet" href="structure.css?v=2">
-  <link rel="stylesheet" href="task-date-cards.css?v=2">
+  <link rel="stylesheet" href="styles-extra.css?v=3">
+  <link rel="stylesheet" href="structure.css?v=3">
+  <link rel="stylesheet" href="task-date-cards.css?v=3">
   <title>Sweety's CA Finals HQ</title>
 </head>
 <body>
@@ -29,9 +29,9 @@
   </div>
   <input type="file" id="restore-input" accept=".cafinalbackup,application/json" hidden>
   <dialog id="sync-dialog" class="sync-dialog"><form method="dialog" class="sync-card"><button class="dialog-close" value="cancel" aria-label="Close">×</button><span class="kicker">OPTIONAL NOTES SYNC</span><h2>Use your notes everywhere</h2><p id="sync-message">Only chapter notes and lecture links are shared through Supabase. Everything else stays in this static app.</p><div id="sync-setup"><label>Supabase project URL<input id="supabase-url" type="url" placeholder="https://your-project.supabase.co"></label><label>Publishable / anon key<input id="supabase-key" type="password" placeholder="eyJ…"></label><button type="button" class="primary" id="save-supabase">Save connection</button></div><div id="sync-auth" hidden><label>Email<input id="sync-email" type="email" autocomplete="email" placeholder="you@example.com"></label><label>Password<input id="sync-password" type="password" autocomplete="current-password" minlength="6" placeholder="Minimum 6 characters"></label><div class="auth-actions"><button type="button" class="primary" id="sign-in">Sign in</button><button type="button" id="sign-up">Create account</button></div></div><div id="sync-connected" hidden><div class="connected-user"><i>✓</i><div><b id="sync-user"></b><small>Notes and links sync automatically</small></div></div><div class="auth-actions"><button type="button" class="primary" id="sync-now">Sync notes now</button><button type="button" id="sign-out">Sign out</button></div></div><small class="privacy-note">Progress, tasks, calendars and documents stay local. Never paste a Supabase service-role key here.</small></form></dialog>
-  <script src="data.js?v=2"></script>
+  <script src="data.js?v=3"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script src="supabase-sync.js?v=2"></script>
-  <script src="app.js?v=2"></script>
+  <script src="supabase-sync.js?v=3"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>
