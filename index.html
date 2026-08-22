@@ -30,11 +30,11 @@
       <main id="view"></main>
     </div>
   </div>
-  <div id="auth-backdrop" class="auth-backdrop"><form id="auth-form" class="auth-card"><button id="auth-close" type="button" aria-label="Close">×</button><span>SECURE CLOUD SYNC</span><h2>Sign in to your tracker</h2><p>Use the same account on every browser to load all your progress, tasks, notes and topics.</p><label>Email<input name="email" type="email" autocomplete="email" required></label><label>Password<input name="password" type="password" autocomplete="current-password" minlength="6" required></label><div id="auth-message" role="status"></div><div class="auth-actions"><button class="secondary" type="submit" name="action" value="signup">Create account</button><button class="primary" type="submit" name="action" value="signin">Sign in</button></div></form></div>
+  <div id="auth-backdrop" class="auth-backdrop"><form id="auth-form" class="auth-card"><button id="auth-close" type="button" aria-label="Close">×</button><span>PRIVATE CLOUD SYNC</span><h2>Sign in to your tracker</h2><p>This tracker accepts only the private account created in Supabase. Use it on every browser to load all your data.</p><label>Email<input name="email" type="email" autocomplete="email" required></label><label>Password<input name="password" type="password" autocomplete="current-password" minlength="6" required></label><div id="auth-message" role="status"></div><div class="auth-actions"><button class="primary" type="submit">Sign in</button></div></form></div>
   <input type="file" id="restore-input" accept=".cafinalbackup,application/json" hidden>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js?v=1"></script>
-  <script src="cloud-sync.js?v=2"></script>
+  <script src="cloud-sync.js?v=3"></script>
   <script src="data.js?v=5"></script>
   <script src="app.js?v=18"></script>
 </body>

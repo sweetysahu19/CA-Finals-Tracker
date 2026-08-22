@@ -50,11 +50,10 @@
   });
   document.addEventListener("submit", async event => {
     const form = event.target.closest("#auth-form"); if (!form || !client) return;
-    event.preventDefault(); const email = form.email.value.trim(), password = form.password.value, action = event.submitter?.value || "signin";
-    const result = action === "signup" ? await client.auth.signUp({ email, password, options: { emailRedirectTo: location.href.split("#")[0] } }) : await client.auth.signInWithPassword({ email, password });
+    event.preventDefault(); const email = form.email.value.trim(), password = form.password.value;
+    const result = await client.auth.signInWithPassword({ email, password });
     const message = document.querySelector("#auth-message");
     if (result.error) message.textContent = result.error.message;
-    else if (action === "signup" && !result.data.session) message.textContent = "Check your email to confirm the account, then sign in.";
     else message.textContent = "Signed in. Loading your tracker…";
   });
 })();
