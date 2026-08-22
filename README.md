@@ -12,8 +12,10 @@ This edition uses only plain HTML, CSS and vanilla JavaScript. It has no framewo
 6. Select the `main` branch and `/ (root)`, then save.
 7. GitHub will show the website address after deployment completes.
 
-## Data and documents
+## Data and backup
 
-Tracker data is stored in the browser used to visit the GitHub Pages address. Documents are stored in IndexedDB in that browser. Use **Home → Data Safety → Export backup** regularly. The `.cafinalbackup` file restores data and documents in a new browser or computer.
+Tracker data is stored in the browser used to visit the GitHub Pages address. Use **Home → Data Safety → Export backup** regularly. The `.cafinalbackup` file restores progress, tasks, notes, links and checklists in a new browser or computer. File attachments are intentionally not included in this version.
 
 Do not change the GitHub repository name after you begin using the tracker unless you export a backup first, because changing the Pages URL creates a different browser-storage origin.
+
+For optional cross-device notes and link sync, see [SUPABASE_SETUP.md](SUPABASE_SETUP.md).
