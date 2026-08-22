@@ -2,16 +2,6 @@
 
 This edition uses only plain HTML, CSS and vanilla JavaScript. It has no framework, package manager, build step or server dependency.
 
-## Optional multi-device Supabase sync
-
-1. Create a free Supabase project.
-2. Open **SQL Editor**, paste everything from `supabase-setup.sql`, and run it once.
-3. In Supabase, open **Project Settings → API** and copy the project URL and publishable/anon key. Never use the service-role key.
-4. Open the deployed tracker, select **Set up sync**, save those two values, and create your account.
-5. Confirm the verification email if Supabase requests it. Sign in with the same email on every device.
-
-Only formatted chapter notes and YouTube/lecture links sync automatically. The syllabus and interface are static website files. Progress, revisions, tasks, calendars, qualification checks, and uploaded documents stay in each browser's local storage.
-
 ## Publish on GitHub Pages
 
 1. Create a new GitHub repository, for example `ca-finals-hq`.

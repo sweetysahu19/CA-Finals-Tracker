@@ -19,7 +19,7 @@
   <div class="app-shell">
     <div class="topbar">
       <div class="brand"><span>CA</span><div><h1>Sweety’s CA Finals HQ</h1><small>Preparation command center · July 2027</small></div></div>
-      <div class="top-actions"><button id="sync-btn" class="sync-btn">☁ Set up notes sync</button><button id="focus-btn">▶ Focus</button><div class="profile"><i>S</i><div><b>Sweety</b><small>CA Final</small></div></div></div>
+      <div class="top-actions"><button id="focus-btn">▶ Focus</button><div class="profile"><i>S</i><div><b>Sweety</b><small>CA Final</small></div></div></div>
     </div>
     <nav id="nav" class="tabs"></nav>
     <div class="page">
@@ -28,10 +28,7 @@
     </div>
   </div>
   <input type="file" id="restore-input" accept=".cafinalbackup,application/json" hidden>
-  <dialog id="sync-dialog" class="sync-dialog"><form method="dialog" class="sync-card"><button class="dialog-close" value="cancel" aria-label="Close">×</button><span class="kicker">OPTIONAL NOTES SYNC</span><h2>Use your notes everywhere</h2><p id="sync-message">Only chapter notes and lecture links are shared through Supabase. Everything else stays in this static app.</p><div id="sync-setup"><label>Supabase project URL<input id="supabase-url" type="url" placeholder="https://your-project.supabase.co"></label><label>Publishable / anon key<input id="supabase-key" type="password" placeholder="eyJ…"></label><button type="button" class="primary" id="save-supabase">Save connection</button></div><div id="sync-auth" hidden><label>Email<input id="sync-email" type="email" autocomplete="email" placeholder="you@example.com"></label><label>Password<input id="sync-password" type="password" autocomplete="current-password" minlength="6" placeholder="Minimum 6 characters"></label><div class="auth-actions"><button type="button" class="primary" id="sign-in">Sign in</button><button type="button" id="sign-up">Create account</button></div></div><div id="sync-connected" hidden><div class="connected-user"><i>✓</i><div><b id="sync-user"></b><small>Notes and links sync automatically</small></div></div><div class="auth-actions"><button type="button" class="primary" id="sync-now">Sync notes now</button><button type="button" id="sign-out">Sign out</button></div></div><small class="privacy-note">Progress, tasks, calendars and documents stay local. Never paste a Supabase service-role key here.</small></form></dialog>
   <script src="data.js?v=3"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script src="supabase-sync.js?v=3"></script>
-  <script src="app.js?v=3"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>
