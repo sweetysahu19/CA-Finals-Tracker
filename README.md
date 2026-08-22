@@ -10,7 +10,7 @@ This edition uses only plain HTML, CSS and vanilla JavaScript. It has no framewo
 4. Open the deployed tracker, select **Set up sync**, save those two values, and create your account.
 5. Confirm the verification email if Supabase requests it. Sign in with the same email on every device.
 
-Progress, revision counts, tasks, qualification checks, links, and formatted notes sync automatically. Uploaded documents intentionally remain in each browser's local storage.
+Only formatted chapter notes and YouTube/lecture links sync automatically. The syllabus and interface are static website files. Progress, revisions, tasks, calendars, qualification checks, and uploaded documents stay in each browser's local storage.
 
 ## Publish on GitHub Pages
 

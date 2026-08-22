@@ -1,14 +1,19 @@
-/* Optional Supabase sync for structured study data. Documents stay in IndexedDB. */
+/* Optional Supabase sync for chapter notes and lecture links only. */
 (() => {
   const CONFIG_KEY = "sweety-ca-supabase-config-v1";
-  let client = null, user = null, getState = null, applyState = null, timer = null, busy = false;
+  let client = null, user = null, getState = null, applyState = null, timer = null, busy = false, lastPayload = "";
   const $ = selector => document.querySelector(selector);
   const config = () => { try { return JSON.parse(localStorage.getItem(CONFIG_KEY)) || {}; } catch { return {}; } };
-  const cleanState = value => {
-    const copy = JSON.parse(JSON.stringify(value));
-    for (const item of Object.values(copy.progress || {})) delete item.file;
-    return copy;
-  };
+  const cleanState = value => ({
+    version: 3,
+    notes: Object.fromEntries(Object.entries(value.progress || {}).flatMap(([key, item]) => {
+      const shared = {};
+      if (item.notesHtml) shared.notesHtml = item.notesHtml;
+      if (item.noteSavedAt) shared.noteSavedAt = item.noteSavedAt;
+      if (item.youtube) shared.youtube = item.youtube;
+      return Object.keys(shared).length ? [[key, shared]] : [];
+    }))
+  });
   function status(text, kind = "") { const button = $("#sync-btn"); button.textContent = text; button.className = `sync-btn ${kind}`; }
   function message(text, error = false) { const el = $("#sync-message"); el.textContent = text; el.style.color = error ? "#b54545" : ""; }
   function show(panel) { ["setup", "auth", "connected"].forEach(name => $("#sync-" + name).hidden = name !== panel); }
@@ -31,7 +36,7 @@
     try {
       const { data, error } = await client.from("ca_tracker_state").select("data,updated_at").eq("user_id", user.id).maybeSingle();
       if (error) throw error;
-      if (data?.data) { applyState(data.data); message("Your latest cloud data is loaded on this device."); }
+      if (data?.data) { applyState(data.data); lastPayload = JSON.stringify(cleanState(getState())); message("Your latest notes and links are loaded on this device."); }
       else await upload();
       status("✓ Synced", "online");
     } catch (error) { status("! Sync needs attention"); message(error.message || "Sync failed. Check the setup instructions.", true); }
@@ -39,11 +44,14 @@
   }
   async function upload() {
     if (!user || !getState) return;
-    const { error } = await client.from("ca_tracker_state").upsert({ user_id: user.id, data: cleanState(getState()), updated_at: new Date().toISOString() }, { onConflict: "user_id" });
+    const shared = cleanState(getState());
+    const { error } = await client.from("ca_tracker_state").upsert({ user_id: user.id, data: shared, updated_at: new Date().toISOString() }, { onConflict: "user_id" });
     if (error) throw error;
+    lastPayload = JSON.stringify(shared);
   }
   function schedule() {
     if (!user) return;
+    if (JSON.stringify(cleanState(getState())) === lastPayload) return;
     clearTimeout(timer);
     status("↻ Saving…", "syncing");
     timer = setTimeout(async () => { try { await upload(); status("✓ Synced", "online"); } catch { status("! Sync needs attention"); } }, 900);
