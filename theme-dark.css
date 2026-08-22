@@ -1,0 +1,70 @@
+/* Final theme layer: loaded last so feature styles cannot override dark mode. */
+html[data-theme="dark"] .activity-card,
+html[data-theme="dark"] .heat-month,
+html[data-theme="dark"] .todo-date-card,
+html[data-theme="dark"] .todo-today,
+html[data-theme="dark"] .todo-summary,
+html[data-theme="dark"] .todo-history,
+html[data-theme="dark"] .roadmap-live,
+html[data-theme="dark"] .roadmap-phase-card {
+  background:#292a2d;
+  color:#dfe1e5;
+  border-color:#3c4043;
+  box-shadow:0 2px 8px rgba(0,0,0,.18);
+}
+html[data-theme="dark"] .activity-head h2,
+html[data-theme="dark"] .heat-month h3,
+html[data-theme="dark"] .todo-card-title h3,
+html[data-theme="dark"] .roadmap-phase-card h3,
+html[data-theme="dark"] .roadmap-live b {color:#dfe1e5}
+html[data-theme="dark"] .activity-head p,
+html[data-theme="dark"] .heat-weekdays b,
+html[data-theme="dark"] .heat-legend,
+html[data-theme="dark"] .todo-card-title p,
+html[data-theme="dark"] .roadmap-phase-card p,
+html[data-theme="dark"] .roadmap-live span {color:#9aa0a6}
+html[data-theme="dark"] .heat-month {background:#252629;border-radius:12px}
+html[data-theme="dark"] .heat-day {background:#35373a;color:#9aa0a6;border:1px solid #3f4145}
+html[data-theme="dark"] .heat-day.level-1 {background:#30463a;color:#a8d5b9;border-color:#385343}
+html[data-theme="dark"] .heat-day.level-2 {background:#365844;color:#b4dfc3;border-color:#416a51}
+html[data-theme="dark"] .heat-day.level-3 {background:#3e6b50;color:#d5eddd;border-color:#4a7b5d}
+html[data-theme="dark"] .heat-day.level-4 {background:#4d8161;color:#eef8f1;border-color:#5b9270}
+html[data-theme="dark"] .heat-day.future {background:#2a2b2e;color:#74777c;border-color:#343538;opacity:.72}
+html[data-theme="dark"] .heat-day.today {outline-color:#8ab4f8}
+html[data-theme="dark"] .heat-day.milestone {box-shadow:0 0 0 2px #8ab4f8}
+html[data-theme="dark"] .calendar-controls button,
+html[data-theme="dark"] .calendar-controls span {background:#303134;color:#bdc1c6;border-color:#4b4d51}
+html[data-theme="dark"] .todo-card-head {border-color:#3c4043}
+html[data-theme="dark"] .todo-calendar {background:#303134;border-color:#4b4d51}
+html[data-theme="dark"] .todo-calendar small {background:#465a78;color:#dce8fa}
+html[data-theme="dark"] .todo-card-count {background:#353b46;color:#a8c7fa}
+html[data-theme="dark"] .todo-date-card.is-today {border-color:#7c9ac5;box-shadow:0 0 0 1px rgba(138,180,248,.22)}
+html[data-theme="dark"] .calendar-day {background:#303134!important;color:#aeb3ba!important;border:1px solid #414347!important}
+html[data-theme="dark"] .calendar-day.today {box-shadow:inset 0 0 0 2px #8ab4f8}
+html[data-theme="dark"] .calendar-day.missed {background:#513334!important;color:#e2a6a8!important;border-color:#684143!important}
+html[data-theme="dark"] .calendar-day.task-level-1 {background:#30463a!important;color:#a8d5b9!important}
+html[data-theme="dark"] .calendar-day.task-level-2 {background:#365844!important;color:#b4dfc3!important}
+html[data-theme="dark"] .calendar-day.task-level-3 {background:#3e6b50!important;color:#d5eddd!important}
+html[data-theme="dark"] .calendar-day.task-level-4 {background:#4d8161!important;color:#f0f7f2!important}
+html[data-theme="dark"] .roadmap-hero {background:linear-gradient(135deg,#293142,#344158 58%,#405675);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+html[data-theme="dark"] .roadmap-hero p,
+html[data-theme="dark"] .roadmap-targets span {color:#bdc7d5}
+html[data-theme="dark"] .roadmap-targets span {background:rgba(255,255,255,.055);border-color:rgba(255,255,255,.11)}
+html[data-theme="dark"] .roadmap-ring {background:conic-gradient(#81c995 var(--roadmap-p),#454b54 0)}
+html[data-theme="dark"] .roadmap-ring:after {background:#303a4d}
+html[data-theme="dark"] .roadmap-progress {background:#3c4043}
+html[data-theme="dark"] .roadmap-progress i {background:linear-gradient(90deg,#8ab4f8,#81c995)}
+html[data-theme="dark"] .roadmap-timeline:before {background:#44474c}
+html[data-theme="dark"] .roadmap-marker span {background:#35373a;color:#aeb3ba;border-color:#202124}
+html[data-theme="dark"] .roadmap-phase.current .roadmap-marker span {background:#516b91;color:#e3edfb;box-shadow:0 0 0 4px rgba(138,180,248,.14)}
+html[data-theme="dark"] .roadmap-phase.complete .roadmap-marker span {background:#426b53;color:#d9ede0}
+html[data-theme="dark"] .roadmap-phase.current .roadmap-phase-card {border-color:#657d9f;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+html[data-theme="dark"] .roadmap-phase.complete .roadmap-phase-card {border-color:#52715f}
+html[data-theme="dark"] .roadmap-phase-card header {border-color:#3c4043}
+html[data-theme="dark"] .roadmap-phase-card header small {color:#a8c7fa}
+html[data-theme="dark"] .roadmap-phase-card header>b {background:#353b46;color:#a8c7fa}
+html[data-theme="dark"] .roadmap-phase.complete .roadmap-phase-card header>b {background:#30463a;color:#a8d5b9}
+html[data-theme="dark"] .roadmap-check {background:#303134;color:#d7d9dd;border-color:#45474b}
+html[data-theme="dark"] .roadmap-check:hover {background:#35373a;border-color:#657d9f}
+html[data-theme="dark"] .roadmap-check.done {background:#30463a;color:#a8d5b9;border-color:#476751}
+html[data-theme="dark"] .roadmap-live button {color:#a8c7fa}
