@@ -206,3 +206,17 @@ html[data-theme="dark"] .todo-history-legend span:nth-child(3) i {background:#87
 html[data-theme="dark"] .todo-history-legend span:nth-child(4) i {background:#273740!important}
 html[data-theme="dark"] .heat-month {background:#0d171f;border-color:#20323c}
 html[data-theme="dark"] .study-coach .coach-copy {background:#111e27;border-color:#29404a}
+
+/* Shared completion language for Tasks and Roadmap. */
+html[data-theme="dark"] .todo-history-circle.scored {color:#dce9e7;transition:transform .16s ease,filter .16s ease}
+html[data-theme="dark"] .todo-history-circle[data-progress="none"] {background:#3a2025;border-color:#6d353d;color:#e3a3a9}
+html[data-theme="dark"] .todo-history-circle[data-progress="low"] {background:#49361f;border-color:#765a2c;color:#dfc28a}
+html[data-theme="dark"] .todo-history-circle[data-progress="partial"] {background:#1b5145;border-color:#2a725f;color:#a9ddcf}
+html[data-theme="dark"] .todo-history-circle[data-progress="complete"] {background:#2c9273;border-color:#43aa89;color:#f0faf7;box-shadow:0 0 0 2px rgba(44,146,115,.13)}
+html[data-theme="dark"] .roadmap-check {background:#14232c;color:#dbe6e9;border-color:#29404a;box-shadow:none}
+html[data-theme="dark"] .roadmap-check span {color:#dbe6e9}
+html[data-theme="dark"] .roadmap-check:hover {background:#193039;border-color:#38606a;transform:translateY(-1px)}
+html[data-theme="dark"] .roadmap-check input {accent-color:#2ecfa8}
+html[data-theme="dark"] .roadmap-check.done {background:#112a27;color:#91c7b7;border-color:#285448}
+html[data-theme="dark"] .roadmap-check.done span {color:#91c7b7;text-decoration-color:#4b7b6d}
+html[data-theme="dark"] .roadmap-phase.current .roadmap-check:not(.done) {border-color:#31515b}
