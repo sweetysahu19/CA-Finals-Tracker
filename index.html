@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#171f43">
+  <meta name="theme-color" content="#f3f7f2">
   <meta name="description" content="CA Final syllabus, revision, task and document tracker">
   <meta property="og:title" content="Sweety's CA Finals HQ">
   <meta property="og:description" content="100% preparation. One clear system.">
@@ -11,18 +11,18 @@
   <link rel="icon" href="favicon.svg">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="styles-extra.css">
+  <link rel="stylesheet" href="track-learn-theme.css">
   <title>Sweety's CA Finals HQ</title>
 </head>
 <body>
   <div class="app-shell">
-    <aside class="sidebar">
-      <div class="brand"><span>CA</span><div>Sweety’s<br><b>Finals HQ</b></div></div>
-      <nav id="nav"></nav>
-      <blockquote>✦<p>One chapter at a time. Keep moving.</p></blockquote>
-      <div class="profile"><i>S</i><div><b>Sweety</b><small>CA Final · 2027</small></div></div>
-    </aside>
+    <div class="topbar">
+      <div class="brand"><span>CA</span><div><h1>Sweety’s CA Finals HQ</h1><small>Preparation command center · July 2027</small></div></div>
+      <div class="top-actions"><button id="sync-btn" class="sync-btn">☁ Set up notes sync</button><button id="focus-btn">▶ Focus</button><div class="profile"><i>S</i><div><b>Sweety</b><small>CA Final</small></div></div></div>
+    </div>
+    <nav id="nav" class="tabs"></nav>
     <div class="page">
-      <header><div><small id="eyebrow">MISSION · OCTOBER 2026</small><h1 id="page-title">Good afternoon, Sweety <em>✦</em></h1><p id="page-subtitle">Every focused hour is a vote for the CA you’re becoming.</p></div><div class="header-actions"><button id="sync-btn" class="sync-btn">☁ Set up sync</button><button id="focus-btn">▶ Start focus session</button></div></header>
+      <header class="view-header"><div><small id="eyebrow">MISSION · OCTOBER 2026</small><h1 id="page-title">Good afternoon, Sweety <em>✦</em></h1><p id="page-subtitle">Every focused hour is a vote for the CA you’re becoming.</p></div></header>
       <main id="view"></main>
     </div>
   </div>
