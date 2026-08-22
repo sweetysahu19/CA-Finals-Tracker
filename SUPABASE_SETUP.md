@@ -1,46 +1,52 @@
-# Supabase setup for notes and links
+# Connect the tracker to Supabase
 
-The current tracker works without Supabase and keeps all data in the browser. Follow this guide when you are ready to sync only notes and links between devices.
+The application is already wired for Supabase. Complete these steps once; future GitHub Pages deployments will automatically reconnect to the same project.
 
-## 1. Create the database table
+## 1. Create the table and security policy
 
 Create a Supabase project, open **SQL Editor**, and run:
 
 ```sql
-create table public.tracker_notes (
+create table public.tracker_state (
   user_id uuid primary key references auth.users(id) on delete cascade,
-  notes jsonb not null default '{}'::jsonb,
-  links jsonb not null default '{}'::jsonb,
+  state jsonb not null default '{}'::jsonb,
   updated_at timestamptz not null default now()
 );
 
-alter table public.tracker_notes enable row level security;
+alter table public.tracker_state enable row level security;
 
-create policy "Users manage their own tracker notes"
-on public.tracker_notes
+create policy "Users manage their own tracker"
+on public.tracker_state
 for all
 to authenticated
 using ((select auth.uid()) = user_id)
 with check ((select auth.uid()) = user_id);
 ```
 
-## 2. Configure authentication
+The `state` column stores the complete tracker: progress, chapter and topic checks, custom topics, notes, links, tasks, revision counts, roadmap checks and activity calendar data.
 
-1. In **Authentication → Providers**, enable Email.
-2. In **Authentication → URL Configuration**, set the Site URL to your GitHub Pages address, such as `https://USERNAME.github.io/REPOSITORY/`.
-3. Add the same exact address to Redirect URLs.
+## 2. Enable sign-in
 
-## 3. Get the browser-safe credentials
+1. Open **Authentication → Providers** and enable Email.
+2. Open **Authentication → URL Configuration**.
+3. Set **Site URL** to `https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/`.
+4. Add that exact URL to **Redirect URLs**.
 
-Copy the Project URL and publishable key from the project's **Connect** dialog or API settings. A publishable/anon key may be used in browser code when Row Level Security is enabled. Never place a `service_role` or secret key in this repository.
+## 3. Add the public project settings
 
-## 4. Connect the application code
+Open the Supabase project **Connect** dialog and copy the Project URL and publishable key. Put them in `supabase-config.js`:
 
-The app still needs a small sign-in screen plus JavaScript that:
+```js
+window.SUPABASE_CONFIG = {
+  url: "https://YOUR-PROJECT.supabase.co",
+  publishableKey: "YOUR-PUBLISHABLE-KEY"
+};
+```
 
-1. Creates the Supabase client with the Project URL and publishable key.
-2. Signs the user in through Supabase Auth.
-3. Loads the signed-in user's `notes` and `links` row.
-4. Upserts notes and links after Save, using the authenticated user's ID as `user_id`.
+The publishable/anon key is intended for browser applications when Row Level Security is enabled. Never add a `service_role` or secret key to GitHub.
 
-Do not sync attachments, progress, tasks, or the syllabus table if you want only notes and links shared. Those can continue to use browser storage.
+## 4. Deploy and sign in
+
+Commit and push the files to GitHub. On the published site, select **Sign in to sync**, create an account, confirm the email if requested, and sign in. Use the same account on every device.
+
+Changes are cached locally immediately and sent to Supabase automatically. The header displays **Saved online** after a successful sync.
