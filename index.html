@@ -9,8 +9,9 @@
   <meta property="og:description" content="100% preparation. One clear system.">
   <meta property="og:image" content="og.png">
   <link rel="icon" href="favicon.svg">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("sweety-theme")||"light"}catch{}</script>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="styles-extra.css?v=27">
+  <link rel="stylesheet" href="styles-extra.css?v=28">
   <link rel="stylesheet" href="roadmap.css?v=1">
   <link rel="stylesheet" href="subtopics.css?v=5">
   <link rel="stylesheet" href="countdown.css?v=4">
@@ -22,7 +23,7 @@
   <div class="app-shell">
     <div class="topbar">
       <div class="brand"><span>CA</span><div><h1>Sweety’s CA Finals</h1><small>Preparation command center · 30 April 2027</small></div></div>
-      <div class="top-actions"><div id="top-stats" class="top-stats"></div><button id="sync-status" class="sync-status" type="button" title="Checking database health"><i class="db-health-dot" aria-hidden="true"></i><span>Connecting…</span></button><button id="sign-out" class="sign-out" type="button">Sign out</button><button id="focus-btn">▶ Focus</button></div>
+      <div class="top-actions"><div id="top-stats" class="top-stats"></div><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Enable dark theme" aria-pressed="false"><span aria-hidden="true">☾</span><b>Dark</b></button><button id="sync-status" class="sync-status" type="button" title="Checking database health"><i class="db-health-dot" aria-hidden="true"></i><span>Connecting…</span></button><button id="sign-out" class="sign-out" type="button">Sign out</button><button id="focus-btn">▶ Focus</button></div>
     </div>
     <nav id="nav" class="tabs"></nav>
     <div class="page">
@@ -36,6 +37,6 @@
   <script src="supabase-config.js?v=1"></script>
   <script src="cloud-sync.js?v=3"></script>
   <script src="data.js?v=5"></script>
-  <script src="app.js?v=36"></script>
+  <script src="app.js?v=37"></script>
 </body>
 </html>
